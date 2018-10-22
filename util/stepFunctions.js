@@ -9,10 +9,18 @@ class StepFunctions {
 
     createNewSpreadsheet(title) {
         const resource = {
-            properties: { title },
+            properties: {
+                title,
+                locale: 'en_US'
+            },
         };
-        return this.sheets.spreadsheets.create({
-            resource
+        return new Promise((resolve, reject) => {
+            this.sheets.spreadsheets.create({
+                resource
+            }, (err, spreadsheet) => {
+                if (err) reject(err);
+                resolve(spreadsheet.data.spreadsheetId);
+            })
         })
     }
 
