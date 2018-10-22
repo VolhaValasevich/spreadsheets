@@ -40,6 +40,22 @@ class StepFunctions {
         })
     }
 
+    writeValuesToRange(spreadsheetId, values, range) {
+        const resource = { values };
+        const valueInputOption = 'RAW';
+        return new Promise((resolve, reject) => {
+            this.sheets.spreadsheets.values.update({
+                spreadsheetId,
+                range,
+                valueInputOption,
+                resource
+            }, (err, result) => {
+                if (err) reject(err);
+                resolve(result.data);
+            })
+        })
+    }
+
 }
 
 module.exports = StepFunctions;
