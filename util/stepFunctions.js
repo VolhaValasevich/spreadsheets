@@ -28,6 +28,18 @@ class StepFunctions {
         })
     }
 
+    readMultipleRanges(spreadsheetId, ranges) {
+        return new Promise((resolve, reject) => {
+            this.sheets.spreadsheets.values.batchGet({
+                spreadsheetId,
+                ranges
+            }, (err, result) => {
+                if (err) reject(err);
+                resolve(result.data.valueRanges);
+            })
+        })
+    }
+
 }
 
 module.exports = StepFunctions;
