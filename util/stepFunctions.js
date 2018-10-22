@@ -12,8 +12,19 @@ class StepFunctions {
             properties: { title },
         };
         return this.sheets.spreadsheets.create({
-            resource,
-            fields: 'spreadsheetId'
+            resource
+        })
+    }
+
+    readRange(spreadsheetId, range) {
+        return new Promise((resolve, reject) => {
+            this.sheets.spreadsheets.values.get({
+                spreadsheetId,
+                range
+            }, (err, result) => {
+                if (err) reject(err);
+                resolve(result.data.values);
+            })
         })
     }
 
