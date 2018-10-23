@@ -1,0 +1,32 @@
+{
+    "sheets": [
+        {
+            "properties": {
+                "sheetId": 0,
+                "title": "All Time Statistics"
+            }
+        },
+        {
+            "properties": {
+                "sheetId": 1,
+                "title": "Last Month Statistic"
+            }
+        },
+        {
+            "properties": {
+                "sheetId": 2,
+                "title": "Last Week Statistic"
+            }
+        },
+        {
+            "properties": {
+                "sheetId": 3,
+                "title": "Today Statistic"
+            }
+        }
+    ],
+    "properties": {
+        "title": "Test Report",
+        "locale": "en_US"
+    }
+}

@@ -1,5 +1,7 @@
 const { google } = require('googleapis');
 const logger = require('./logger').logger;
+const newSpreadsheetProperties = require('../resources/newSpreadsheetProperties.json');
+const colorFormattingRules = require('../resources/colorFormattingRules.json');
 
 class StepFunctions {
 
@@ -8,12 +10,7 @@ class StepFunctions {
     }
 
     createNewSpreadsheet(title) {
-        const resource = {
-            properties: {
-                title,
-                locale: 'en_US'
-            },
-        };
+        const resource = newSpreadsheetProperties;
         return new Promise((resolve, reject) => {
             this.sheets.spreadsheets.create({
                 resource
@@ -75,13 +72,13 @@ class StepFunctions {
                 resource
             }, (err, res) => {
                 if (err) reject(err);
-                resolve(res); 
+                resolve(res);
             })
         })
     }
 
     colorFormatting(spreadsheetId) {
-        const resource = require('../resources/colorFormattingRules.json');
+        const resource = colorFormattingRules;
         return new Promise((resolve, reject) => {
             this.sheets.spreadsheets.batchUpdate({
                 spreadsheetId,

@@ -3,7 +3,7 @@
         {
             "repeatCell": {
                 "range": {
-                    "sheetId": 0,
+                    "sheetId": 3,
                     "startRowIndex": 0,
                     "endRowIndex": 1,
                     "endColumnIndex": 7
@@ -28,7 +28,7 @@
         {
             "updateSheetProperties": {
                 "properties": {
-                    "sheetId": 0,
+                    "sheetId": 3,
                     "gridProperties": {
                         "frozenRowCount": 1
                     }
@@ -41,7 +41,7 @@
                 "rule": {
                     "ranges": [
                         {
-                            "sheetId": 0,
+                            "sheetId": 3,
                             "startRowIndex": 2,
                             "startColumnIndex": 0,
                             "endColumnIndex": 7
@@ -73,7 +73,7 @@
                 "rule": {
                     "ranges": [
                         {
-                            "sheetId": 0,
+                            "sheetId": 3,
                             "startRowIndex": 2,
                             "startColumnIndex": 0,
                             "endColumnIndex": 7
