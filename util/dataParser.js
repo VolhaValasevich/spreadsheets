@@ -25,4 +25,19 @@ function parseReport(reportJson) {
     return result;
 }
 
-module.exports = parseReport;
+function stringToDate(string) {
+    const dateArray = string.split('/');
+    return new Date(dateArray[2], dateArray[0] - 1, dateArray[1]);
+}
+
+function getByCurrentDate(data) {
+    const currentDate = new Date(Date.now());   //get current date and time
+    const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());   //get the beginning of current day
+    const result = data.map((row) => {
+        const dataDate = stringToDate(row[0]);      //parse the date of scenario run into a Date object
+        if (dataDate.getTime() === today.getTime()) return row;     
+    })
+    return result.filter(el => el);     //clear all undefined values
+}
+
+module.exports = { parseReport, getByCurrentDate };
