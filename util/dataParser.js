@@ -1,5 +1,7 @@
 function parseReport(reportJson) {
     let result = [];
+    const date = new Date(Date.now());
+    const dateString = date.toDateString();
     reportJson.forEach((feature) => {
         let featureName = feature.name;
         feature.elements.forEach((scenario) => {
@@ -17,7 +19,7 @@ function parseReport(reportJson) {
                 }
             })
             const scenarioStatus = (statisics.failed > 0) ? 'failed' : 'passed';
-            result.push([featureName, scenarioName, statisics.passed, statisics.failed, statisics.skipped, scenarioStatus, statisics.duration]);
+            result.push([dateString, featureName, scenarioName, statisics.passed, statisics.failed, statisics.skipped, scenarioStatus, statisics.duration]);
         })
     })
     return result;

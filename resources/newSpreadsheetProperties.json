@@ -26,6 +26,11 @@
                             "values": [
                                 {
                                     "userEnteredValue": {
+                                        "stringValue": "Date"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
                                         "stringValue": "Feature"
                                     }
                                 },
@@ -75,7 +80,7 @@
                                 },
                                 {
                                     "userEnteredValue": {
-                                        "formulaValue": "=SUM(C3:C)"
+                                        "stringValue": ""
                                     }
                                 },
                                 {
@@ -90,12 +95,17 @@
                                 },
                                 {
                                     "userEnteredValue": {
+                                        "formulaValue": "=SUM(F3:F)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
                                         "stringValue": ""
                                     }
                                 },
                                 {
                                     "userEnteredValue": {
-                                        "formulaValue": "=SUM(G3:G)"
+                                        "formulaValue": "=SUM(H3:H)"
                                     }
                                 }
                             ]

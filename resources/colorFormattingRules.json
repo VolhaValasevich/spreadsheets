@@ -6,7 +6,7 @@
                     "sheetId": 3,
                     "startRowIndex": 0,
                     "endRowIndex": 1,
-                    "endColumnIndex": 7
+                    "endColumnIndex": 8
                 },
                 "cell": {
                     "userEnteredFormat": {
@@ -23,6 +23,24 @@
                     }
                 },
                 "fields": "userEnteredFormat(backgroundColor,textFormat,horizontalAlignment)"
+            }
+        },
+        {
+            "repeatCell": {
+                "range": {
+                    "sheetId": 3,
+                    "startRowIndex": 2,
+                    "startColumnIndex": 0,
+                    "endColumnIndex": 1
+                },
+                "cell": {
+                    "userEnteredFormat": {
+                        "numberFormat": {
+                            "type": "DATE"
+                        }
+                    }
+                },
+                "fields": "userEnteredFormat(numberFormat)"
             }
         },
         {
@@ -44,7 +62,7 @@
                             "sheetId": 3,
                             "startRowIndex": 2,
                             "startColumnIndex": 0,
-                            "endColumnIndex": 7
+                            "endColumnIndex": 8
                         }
                     ],
                     "booleanRule": {
@@ -52,7 +70,7 @@
                             "type": "CUSTOM_FORMULA",
                             "values": [
                                 {
-                                    "userEnteredValue": "=$F3=\"FAILED\""
+                                    "userEnteredValue": "=$G3=\"FAILED\""
                                 }
                             ]
                         },
@@ -76,7 +94,7 @@
                             "sheetId": 3,
                             "startRowIndex": 2,
                             "startColumnIndex": 0,
-                            "endColumnIndex": 7
+                            "endColumnIndex": 8
                         }
                     ],
                     "booleanRule": {
@@ -84,7 +102,7 @@
                             "type": "CUSTOM_FORMULA",
                             "values": [
                                 {
-                                    "userEnteredValue": "=$F3=\"passed\""
+                                    "userEnteredValue": "=$G3=\"passed\""
                                 }
                             ]
                         },
