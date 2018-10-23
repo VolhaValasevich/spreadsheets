@@ -9,7 +9,7 @@ class StepFunctions {
         this.sheets = google.sheets({ version: 'v4', auth });
     }
 
-    createNewSpreadsheet(title) {
+    createNewSpreadsheet() {
         const resource = newSpreadsheetProperties;
         return new Promise((resolve, reject) => {
             this.sheets.spreadsheets.create({

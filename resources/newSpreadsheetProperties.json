@@ -19,6 +19,90 @@
             }
         },
         {
+            "data": [
+                {
+                    "rowData": [
+                        {
+                            "values": [
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Feature"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Scenario Name"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Passed"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Failed"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Skipped"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Status"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Duration"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "values": [
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": ""
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": ""
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=SUM(C3:C)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=SUM(D3:D)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=SUM(E3:E)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": ""
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=SUM(G3:G)"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
             "properties": {
                 "sheetId": 3,
                 "title": "Today Statistic"
