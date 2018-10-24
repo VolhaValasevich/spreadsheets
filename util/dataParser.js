@@ -2,6 +2,7 @@ function parseReport(reportJson) {
     let result = [];
     const date = new Date(Date.now());
     const dateString = date.toLocaleDateString('en-US');
+    result.push([dateString, date.toLocaleTimeString()]);
     reportJson.forEach((feature) => {
         let featureName = feature.name;
         feature.elements.forEach((scenario) => {
