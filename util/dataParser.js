@@ -40,4 +40,25 @@ function getByCurrentDate(data) {
     return result.filter(el => el);     //clear all undefined values
 }
 
-module.exports = { parseReport, getByCurrentDate };
+function getByCurrentWeek(data) {
+    const currentDate = new Date(Date.now());   //get current date and time
+    const currentWeekDay = currentDate.getDay();
+    const firstWeekDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - currentWeekDay + 1);   //date in the beginning of current week
+    const lastWeekDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + (7 - currentWeekDay));  //date in the end of current week
+    const result = data.map((row) => {
+        const dataDate = stringToDate(row[0]);      //parse the date of scenario run into a Date object
+        if (dataDate.getTime() >= firstWeekDay.getTime() && dataDate.getTime() <= lastWeekDay.getTime()) return row;     
+    })
+    return result.filter(el => el);     //clear all undefined values
+}
+
+function getByCurrentMonth(data) {
+    const currentDate = new Date(Date.now());   //get current date and time
+    const result = data.map((row) => {
+        const dataDate = stringToDate(row[0]);      //parse the date of scenario run into a Date object
+        if (dataDate.getMonth() === currentDate.getMonth()) return row;     
+    })
+    return result.filter(el => el);     //clear all undefined values
+}
+
+module.exports = { parseReport, getByCurrentDate, getByCurrentWeek, getByCurrentMonth };
