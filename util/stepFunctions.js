@@ -5,6 +5,7 @@ const newSpreadsheetProperties = require('../resources/newSpreadsheetProperties.
 const defaultSheetData = require('../resources/defaultSheetData.json');
 const colorFormattingRules = require('../resources/colorFormattingRules.json');
 const conditionalFormattingRules = require('../resources/conditionalFormattingRules.json');
+const { getByCurrentDate, getByCurrentWeek, getByCurrentMonth } = require('./dataParser');
 
 class StepFunctions {
 
@@ -81,6 +82,23 @@ class StepFunctions {
                 resolve(res);
             })
         })
+    }
+
+    async writeAllDataToSpreadsheet(spreadsheetId, data) {
+        const categories = Object.keys(data);
+        newSpreadsheetProperties.sheets.forEach(async (sheet) => {
+            await this.writeValuesToRange(spreadsheetId, data[categories[sheet.properties.sheetId]], `'${sheet.properties.title}'!A3:H`);
+        })
+    }
+
+    async updateData(spreadsheetId, report) {
+        const data = { };
+        data.allTimeData = await this.readRange(spreadsheetId, newSpreadsheetProperties.sheets[0].properties.title);
+        data.allTimeData = data.allTimeData.slice(2).concat(report);
+        data.lastMonthData = getByCurrentMonth(data.allTimeData);
+        data.lastWeekData = getByCurrentWeek(data.allTimeData);
+        data.todayData = getByCurrentDate(data.lastWeekData);
+        await this.writeAllDataToSpreadsheet(spreadsheetId, data);
     }
 
     colorFormatting(spreadsheetId) {
