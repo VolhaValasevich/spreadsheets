@@ -45,6 +45,26 @@
                                     "userEnteredValue": {
                                         "stringValue": "Duration"
                                     }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Total Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Passed Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Failed Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Pass Rate"
+                                    }
                                 }
                             ]
                         },
@@ -88,6 +108,26 @@
                                 {
                                     "userEnteredValue": {
                                         "formulaValue": "=SUM(H3:H)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNT(F3:F)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNTIF(G3:G, \"=passed\")"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNTIF(G3:G, \"=failed\")"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=J2/I2*100%"
                                     }
                                 }
                             ]
@@ -145,6 +185,26 @@
                                     "userEnteredValue": {
                                         "stringValue": "Duration"
                                     }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Total Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Passed Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Failed Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Pass Rate"
+                                    }
                                 }
                             ]
                         },
@@ -188,6 +248,26 @@
                                 {
                                     "userEnteredValue": {
                                         "formulaValue": "=SUM(H3:H)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNT(F3:F)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNTIF(G3:G, \"=passed\")"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNTIF(G3:G, \"=failed\")"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=J2/I2*100%"
                                     }
                                 }
                             ]
@@ -245,6 +325,26 @@
                                     "userEnteredValue": {
                                         "stringValue": "Duration"
                                     }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Total Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Passed Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Failed Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Pass Rate"
+                                    }
                                 }
                             ]
                         },
@@ -288,6 +388,26 @@
                                 {
                                     "userEnteredValue": {
                                         "formulaValue": "=SUM(H3:H)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNT(F3:F)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNTIF(G3:G, \"=passed\")"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNTIF(G3:G, \"=failed\")"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=J2/I2*100%"
                                     }
                                 }
                             ]
@@ -345,6 +465,26 @@
                                     "userEnteredValue": {
                                         "stringValue": "Duration"
                                     }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Total Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Passed Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Failed Scenarios"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "stringValue": "Pass Rate"
+                                    }
                                 }
                             ]
                         },
@@ -388,6 +528,26 @@
                                 {
                                     "userEnteredValue": {
                                         "formulaValue": "=SUM(H3:H)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNT(F3:F)"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNTIF(G3:G, \"=passed\")"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=COUNTIF(G3:G, \"=failed\")"
+                                    }
+                                },
+                                {
+                                    "userEnteredValue": {
+                                        "formulaValue": "=J2/I2*100%"
                                     }
                                 }
                             ]
