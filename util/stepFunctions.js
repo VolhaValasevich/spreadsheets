@@ -1,7 +1,10 @@
 const { google } = require('googleapis');
 const logger = require('./logger').logger;
+const fs = require('fs');
 const newSpreadsheetProperties = require('../resources/newSpreadsheetProperties.json');
+const defaultSheetData = require('../resources/defaultSheetData.json');
 const colorFormattingRules = require('../resources/colorFormattingRules.json');
+const conditionalFormattingRules = require('../resources/conditionalFormattingRules.json');
 
 class StepFunctions {
 
@@ -11,6 +14,9 @@ class StepFunctions {
 
     createNewSpreadsheet() {
         const resource = newSpreadsheetProperties;
+        resource.sheets.forEach((sheet) => {
+            sheet.data = defaultSheetData.data;
+        })
         return new Promise((resolve, reject) => {
             this.sheets.spreadsheets.create({
                 resource
@@ -78,11 +84,23 @@ class StepFunctions {
     }
 
     colorFormatting(spreadsheetId) {
-        const resource = colorFormattingRules;
+        let requests = [];
+        newSpreadsheetProperties.sheets.forEach((sheet) => {    //apply all color and conditional formatting rules to all sheets in a spreadsheet
+            conditionalFormattingRules.requests.forEach((rule) => {
+                const conditionalRule = JSON.parse(JSON.stringify(rule));   //create a copy of an object to avoid rewriting properties
+                conditionalRule.addConditionalFormatRule.rule.ranges[0].sheetId = sheet.properties.sheetId;
+                requests.push(conditionalRule);
+            });
+            colorFormattingRules.requests.forEach((rule) => {
+                const colorRule = JSON.parse(JSON.stringify(rule));         //create a copy of an object to avoid rewriting properties
+                colorRule.repeatCell.range.sheetId = sheet.properties.sheetId;
+                requests.push(colorRule);
+            })
+        })
         return new Promise((resolve, reject) => {
             this.sheets.spreadsheets.batchUpdate({
                 spreadsheetId,
-                resource
+                resource: { requests }
             }, (err, res) => {
                 if (err) reject(err);
                 resolve(res);
