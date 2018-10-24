@@ -47,7 +47,7 @@ class StepFunctions {
 
     writeValuesToRange(spreadsheetId, values, range) {
         const resource = { values };
-        const valueInputOption = 'RAW';
+        const valueInputOption = 'USER_ENTERED';
         return new Promise((resolve, reject) => {
             this.sheets.spreadsheets.values.update({
                 spreadsheetId,
@@ -56,7 +56,7 @@ class StepFunctions {
                 resource
             }, (err, result) => {
                 if (err) reject(err);
-                resolve(result.data);
+                resolve(result);
             })
         })
     }

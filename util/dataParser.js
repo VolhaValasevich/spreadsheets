@@ -1,7 +1,7 @@
 function parseReport(reportJson) {
     let result = [];
     const date = new Date(Date.now());
-    const dateString = date.toDateString();
+    const dateString = date.toLocaleDateString('en-US');
     reportJson.forEach((feature) => {
         let featureName = feature.name;
         feature.elements.forEach((scenario) => {
@@ -15,7 +15,7 @@ function parseReport(reportJson) {
             scenario.steps.forEach((step) => {
                 if (step.result) {
                     statisics[step.result.status]++;
-                    statisics.duration += step.result.duration;
+                    if (step.result.duration) statisics.duration += step.result.duration;
                 }
             })
             const scenarioStatus = (statisics.failed > 0) ? 'failed' : 'passed';
