@@ -1,3 +1,5 @@
+const dayInMilliseconds = 24 * 60 * 60 * 1000;
+
 function parseReport(reportJson) {
     let result = [];
     const date = new Date(Date.now());
@@ -43,12 +45,13 @@ function getByCurrentDate(data) {
 
 function getByCurrentWeek(data) {
     const currentDate = new Date(Date.now());   //get current date and time
+    const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());   //get the beginning of current day
     const currentWeekDay = currentDate.getDay();
-    const firstWeekDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - currentWeekDay + 1);   //date in the beginning of current week
-    const lastWeekDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + (7 - currentWeekDay));  //date in the end of current week
+    const firstWeekDay = today.getTime() - dayInMilliseconds * (currentWeekDay + 1);   //date in the beginning of current week
+    const lastWeekDay = today.getTime() + dayInMilliseconds * (7 - currentWeekDay);    //date in the end of current week
     const result = data.map((row) => {
         const dataDate = stringToDate(row[0]);      //parse the date of scenario run into a Date object
-        if (dataDate.getTime() >= firstWeekDay.getTime() && dataDate.getTime() <= lastWeekDay.getTime()) return row;     
+        if (dataDate.getTime() >= firstWeekDay && dataDate.getTime() <= lastWeekDay) return row;     
     })
     return result.filter(el => el);     //clear all undefined values
 }
