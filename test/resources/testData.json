@@ -1,0 +1,144 @@
+{
+    "data": [
+        [
+            "10/21/2018",
+            "Feature 1",
+            "Scenario 1",
+            "5",
+            "0",
+            "0",
+            "passed",
+            "4865"
+        ],
+        [
+            "10/22/2018",
+            "Feature 2",
+            "Scenario 2",
+            "2",
+            "0",
+            "0",
+            "passed",
+            "3286"
+        ],
+        [
+            "10/23/2018",
+            "Feature 3",
+            "Scenario 3",
+            "3",
+            "0",
+            "0",
+            "passed",
+            "7895"
+        ],
+        [
+            "10/24/2018",
+            "Feature 4",
+            "Scenario 4",
+            "0",
+            "1",
+            "5",
+            "failed",
+            "4103"
+        ],
+        [
+            "10/25/2018",
+            "Feature 5",
+            "Scenario 5",
+            "0",
+            "1",
+            "6",
+            "failed",
+            "4865"
+        ],
+        [
+            "10/26/2018",
+            "Feature 6",
+            "Scenario 6",
+            "1",
+            "1",
+            "0",
+            "failed",
+            "3286"
+        ],
+        [
+            "10/27/2018",
+            "Feature 7",
+            "Scenario 7",
+            "2",
+            "1",
+            "3",
+            "failed",
+            "7895"
+        ],
+        [
+            "10/28/2018",
+            "Feature 8",
+            "Scenario 8",
+            "9",
+            "0",
+            "0",
+            "passed",
+            "4103"
+        ],
+        [
+            "10/29/2018",
+            "Feature 9",
+            "Scenario 9",
+            "0",
+            "1",
+            "2",
+            "failed",
+            "4865"
+        ],
+        [
+            "10/30/2018",
+            "Feature 10",
+            "Scenario 10",
+            "6",
+            "1",
+            "3",
+            "failed",
+            "3286"
+        ],
+        [
+            "10/31/2018",
+            "Feature 11",
+            "Scenario 11",
+            "7",
+            "0",
+            "0",
+            "passed",
+            "7895"
+        ],
+        [
+            "11/1/2018",
+            "Feature 12",
+            "Scenario 12",
+            "0",
+            "1",
+            "1",
+            "failed",
+            "4103"
+        ],
+        [
+            "11/2/2018",
+            "Feature 13",
+            "Scenario 13",
+            "2",
+            "0",
+            "0",
+            "passed",
+            "4893"
+        ]
+    ],
+    "expectedResults": {
+        "passedSteps": [["37"]],
+        "failedSteps": [["7"]],
+        "skippedSteps": [["20"]],
+        "duration": [["65340"]],
+        "totalScenarios": [["13"]],
+        "passedScenarios": [["6"]],
+        "failedScenarios": [["7"]],
+        "passrate": [["0.46"]]
+    }
+}
