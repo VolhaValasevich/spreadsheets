@@ -129,7 +129,8 @@
                             },
                             "userEnteredFormat": {
                                 "numberFormat": {
-                                    "type": "PERCENT"
+                                    "type": "NUMBER",
+                                    "pattern": "0.00"
                                 }
                             }
                         }
