@@ -86,6 +86,7 @@ class StepFunctions {
 
     async writeAllDataToSpreadsheet(spreadsheetId, data) {
         const categories = Object.keys(data);
+        await this.clearAllData(spreadsheetId);
         newSpreadsheetProperties.sheets.forEach(async (sheet) => {
             await this.writeValuesToRange(spreadsheetId, data[categories[sheet.properties.sheetId]], `'${sheet.properties.title}'!A3:H`);
         })
@@ -99,6 +100,22 @@ class StepFunctions {
         data.lastWeekData = getByCurrentWeek(data.allTimeData);
         data.todayData = getByCurrentDate(data.lastWeekData);
         await this.writeAllDataToSpreadsheet(spreadsheetId, data);
+    }
+
+    clearAllData(spreadsheetId) {
+        return new Promise((resolve, reject) => {
+            const ranges = [];
+            newSpreadsheetProperties.sheets.forEach((sheet) => {
+                ranges.push(`'${sheet.properties.title}'!A3:H`);
+            })
+            this.sheets.spreadsheets.values.batchClear({
+                spreadsheetId,
+                ranges
+            }, (err, res) => {
+                if (err) reject(err);
+                resolve(res);
+            })
+        })
     }
 
     colorFormatting(spreadsheetId) {

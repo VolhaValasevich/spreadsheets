@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { parseReport } = require('./util/dataParser');
 const report = require('./resources/report.json');
+const logger = require('./util/logger').logger;
 const spreadsheetIdPath = path.join(__dirname, 'resources', 'spreadsheetId.json');
 
 async function main() {
@@ -20,6 +21,7 @@ async function main() {
     }
     const latestData = parseReport(report);
     await steps.updateData(spreadsheetId, latestData);
+    logger.info('Successfully updated test data on Google Spreadsheets')
 }
 
 main()
