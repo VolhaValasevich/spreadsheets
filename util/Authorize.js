@@ -11,7 +11,8 @@ function authorize(credentials) {
     return new Promise((resolve, reject) => {
         const { client_secret, client_id, redirect_uris } = credentials.installed;
         const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
-        const tokenPath = path.resolve('./', credentials.token_path);
+        credentials.token_path.unshift(__dirname, '..');
+        const tokenPath = path.join(...credentials.token_path);
         if (fs.existsSync(tokenPath)) {
             const token = fs.readFileSync(tokenPath);
             oAuth2Client.setCredentials(JSON.parse(token));
