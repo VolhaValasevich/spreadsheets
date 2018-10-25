@@ -29,7 +29,7 @@ class Logger {
             transports: [
                 new transports.Console({
                     format: combine(
-                        label({ label: 'mail.google.com' }),
+                        label({ label: 'docs.google.com' }),
                         timestamp({
                             format: 'YYYY-MM-DD HH:mm:ss'
                         }),

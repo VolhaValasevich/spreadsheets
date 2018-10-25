@@ -7,10 +7,11 @@ const path = require('path');
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/drive'];
 
-function authorize(credentials) {
+function authorize(creds) {
     return new Promise((resolve, reject) => {
-        const { client_secret, client_id, redirect_uris } = credentials.installed;
+        const { client_secret, client_id, redirect_uris } = creds.installed;
         const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
+        const credentials = JSON.parse(JSON.stringify(creds))   //create a copy to modify
         credentials.token_path.unshift(__dirname, '..');
         const tokenPath = path.join(...credentials.token_path);
         if (fs.existsSync(tokenPath)) {

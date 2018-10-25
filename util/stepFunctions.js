@@ -35,8 +35,10 @@ class StepFunctions {
                 spreadsheetId,
                 range
             }, (err, result) => {
-                if (err) reject(err);
-                resolve(result.data.values);
+                if (err) {
+                    logger.error(`Cannot read values in spreadsheet https://docs.google.com/spreadsheets/d/${spreadsheetId} in range [${range}]: ${err.errors[0].message}`);
+                    reject(err.errors[0].message);
+                } else resolve(result.data.values);
             })
         })
     }

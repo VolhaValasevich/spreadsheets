@@ -24,7 +24,14 @@ async function main() {
     logger.info(`Successfully updated test data on https://docs.google.com/spreadsheets/d/${spreadsheetId}`);
 }
 
-main()
+main().catch((err) => {
+    logger.error(err);
+    if (err === 'Requested entity was not found.') {
+        logger.info('A new spreadsheet will be created.');
+        fs.unlinkSync(spreadsheetIdPath);
+        main();
+    }
+})
 
 
 
