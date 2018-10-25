@@ -126,6 +126,11 @@
                         {
                             "userEnteredValue": {
                                 "formulaValue": "=J2/I2*100%"
+                            },
+                            "userEnteredFormat": {
+                                "numberFormat": {
+                                    "type": "PERCENT"
+                                }
                             }
                         }
                     ]
