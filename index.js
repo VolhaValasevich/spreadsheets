@@ -21,7 +21,7 @@ async function main() {
     }
     const latestData = parseReport(report);
     await steps.updateData(spreadsheetId, latestData);
-    logger.info('Successfully updated test data on Google Spreadsheets')
+    logger.info(`Successfully updated test data on https://docs.google.com/spreadsheets/d/${spreadsheetId}`);
 }
 
 main()
