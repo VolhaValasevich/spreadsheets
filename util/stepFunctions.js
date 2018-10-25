@@ -23,8 +23,10 @@ class StepFunctions {
             this.sheets.spreadsheets.create({
                 resource
             }, (err, spreadsheet) => {
-                if (err) reject(err);
-                resolve(spreadsheet.data.spreadsheetId);
+                if (err) {
+                    logger.error(`Cannot create a spreadsheet: ${err.errors[0].message}`);
+                    reject(err.errors[0].message);
+                } else resolve(spreadsheet.data.spreadsheetId);
             })
         })
     }
