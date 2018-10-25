@@ -1,0 +1,14 @@
+{
+    "requests": [
+        {
+            "updateSheetProperties": {
+                "properties": {
+                    "gridProperties": {
+                        "frozenRowCount": 2
+                    }
+                },
+                "fields": "gridProperties.frozenRowCount"
+            }
+        }
+    ]
+}

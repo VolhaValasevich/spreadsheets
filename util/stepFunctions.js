@@ -5,6 +5,7 @@ const newSpreadsheetProperties = require('../resources/newSpreadsheetProperties.
 const defaultSheetData = require('../resources/defaultSheetData.json');
 const colorFormattingRules = require('../resources/colorFormattingRules.json');
 const conditionalFormattingRules = require('../resources/conditionalFormattingRules.json');
+const sheetProperties = require('../resources/sheetProperties.json');
 const { getByCurrentDate, getByCurrentWeek, getByCurrentMonth } = require('./dataParser');
 
 class StepFunctions {
@@ -130,6 +131,11 @@ class StepFunctions {
                 const colorRule = JSON.parse(JSON.stringify(rule));         //create a copy of an object to avoid rewriting properties
                 colorRule.repeatCell.range.sheetId = sheet.properties.sheetId;
                 requests.push(colorRule);
+            });
+            sheetProperties.requests.forEach((rule) => {
+                const property = JSON.parse(JSON.stringify(rule));         //create a copy of an object to avoid rewriting properties
+                property.updateSheetProperties.properties.sheetId = sheet.properties.sheetId;
+                requests.push(property);
             })
         })
         return new Promise((resolve, reject) => {
