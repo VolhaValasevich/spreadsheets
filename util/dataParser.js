@@ -25,7 +25,7 @@ function parseReport(reportJson, dateOptional) {
                 }
             })
             const scenarioStatus = (statisics.failed > 0) ? 'failed' : 'passed';
-            result.push([dateString, featureName, scenarioName, statisics.passed, statisics.failed, statisics.skipped, scenarioStatus, statisics.duration]);
+            result.push([dateString, featureName, scenarioName, statisics.passed.toString(), statisics.failed.toString(), statisics.skipped.toString(), scenarioStatus, statisics.duration.toString()]);
         })
     })
     return result;

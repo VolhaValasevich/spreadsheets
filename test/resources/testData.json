@@ -8,51 +8,51 @@
             "10/26/2018",
             "Menu",
             "Verify user can open menu",
-            3,
-            1,
-            8,
+            "3",
+            "1",
+            "8",
             "failed",
-            9703
+            "9703"
         ],
         [
             "10/26/2018",
             "Access to other sites",
             "I should be able too access bash.im",
-            3,
-            0,
-            0,
+            "3",
+            "0",
+            "0",
             "passed",
-            2835
+            "2835"
         ],
         [
             "10/26/2018",
             "Access to other sites",
             "I should be able to access github",
-            3,
-            0,
-            0,
+            "3",
+            "0",
+            "0",
             "passed",
-            2969
+            "2969"
         ],
         [
             "10/26/2018",
             "Access to other sites",
             "I should be able to access https://habrahabr.ru/",
-            3,
-            0,
-            0,
+            "3",
+            "0",
+            "0",
             "passed",
-            7254
+            "7254"
         ],
         [
             "10/26/2018",
             "Access to other sites",
             "I should be able to access https://ya.ru/",
-            3,
-            0,
-            0,
+            "3",
+            "0",
+            "0",
             "passed",
-            1309
+            "1309"
         ]
     ],
     "expectedResults": {

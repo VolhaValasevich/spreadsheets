@@ -2,39 +2,21 @@ const chai = require('chai');
 const StepFunctions = require('../../util/stepFunctions');
 const authorize = require('../../util/Authorize');
 const creds = require('../resources/credentials.json');
-const { getByCurrentDate, getByCurrentWeek, getByCurrentMonth } = require('../../util/dataParser');
+const { parseReport, getByCurrentDate, getByCurrentWeek, getByCurrentMonth } = require('../../util/dataParser');
 const newSpreadsheetProperties = require('../../resources/newSpreadsheetProperties.json');
 const testSpreadsheetId = require('../resources/testSpreadsheetId.json').id;
 const expect = chai.expect;
 const testData = require('../resources/testData.json');
-const fs = require('fs');
+const testReport = require('../resources/testReport.json');
+const testDate = '2018-10-26T10:00:00';
 
-function generateDataByDate(data) {
-    const dayInMilliseconds = 24 * 60 * 60 * 1000;
-    const resultDates = [];
-    const currentDate = new Date(Date.now());
-    const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());   //get the beginning of current day
-    const currentWeekDay = today.getDay();
-    const currentMonth = today.getMonth();
-    const firstWeekDay = today.getTime() - dayInMilliseconds * (currentWeekDay + 1);   //date in the beginning of current week
-    const lastWeekDay = today.getTime() + dayInMilliseconds * (7 - currentWeekDay);    //date in the end of current week
-    for (let i = firstWeekDay; i <= lastWeekDay; i += dayInMilliseconds) {                //get an array with days of current week
-        resultDates.push(new Date(i));
-    }
-    for (let i = 1; i <= 2; i++) {
-        let month = currentMonth - i;
-        if (month < 0) month = 11 + month;
-        resultDates.push(new Date(today.getFullYear(), month, today.getDate()))
-    }
-    for (let i = 1; i <= 2; i++) {
-        let month = currentMonth + i;
-        if (month > 11) month = month - 11;
-        resultDates.push(new Date(today.getFullYear(), month, today.getDate()))
-    }
-    data.forEach((el, index) => {
-        el[0] = resultDates[index].toLocaleDateString('en-US');
-    })
-    return data;
+function generateDataByDate(report) {
+    const day = parseReport(report, new Date('2018-10-26T10:00:00'));
+    const week = parseReport(report, new Date('2018-10-22T10:00:00'));
+    const month = parseReport(report, new Date('2018-10-01T10:00:00'));
+    const oddData = parseReport(report, new Date('2019-10-01T10:00:00'));
+    allData = day.concat(week, month, oddData);
+    return allData;
 }
 
 describe('Spreadsheet Functions', () => {
@@ -65,10 +47,10 @@ describe('Spreadsheet Functions', () => {
 
         before(async () => {
             const dataCopy = Object.assign({}, testData);
-            const generatedData = generateDataByDate(dataCopy.data);
-            today = getByCurrentDate(generatedData);
-            week = getByCurrentWeek(generatedData);
-            month = getByCurrentMonth(generatedData);
+            const generatedData = generateDataByDate(testReport);
+            today = getByCurrentDate(generatedData, new Date(testDate));
+            week = getByCurrentWeek(generatedData, new Date(testDate));
+            month = getByCurrentMonth(generatedData, new Date(testDate));
             await steps.updateData(testSpreadsheetId, generatedData);
         })
 
