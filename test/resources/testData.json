@@ -56,45 +56,13 @@
         ]
     ],
     "expectedResults": {
-        "passedSteps": [
-            [
-                "15"
-            ]
-        ],
-        "failedSteps": [
-            [
-                "1"
-            ]
-        ],
-        "skippedSteps": [
-            [
-                "8"
-            ]
-        ],
-        "duration": [
-            [
-                "24070"
-            ]
-        ],
-        "totalScenarios": [
-            [
-                "5"
-            ]
-        ],
-        "passedScenarios": [
-            [
-                "4"
-            ]
-        ],
-        "failedScenarios": [
-            [
-                "1"
-            ]
-        ],
-        "passrate": [
-            [
-                "0.80"
-            ]
-        ]
+        "passedSteps": "15",
+        "failedSteps": "1",
+        "skippedSteps": "8",
+        "duration": "24070",
+        "totalScenarios": "5",
+        "passedScenarios": "4",
+        "failedScenarios": "1",
+        "passrate": "0.80"
     }
 }

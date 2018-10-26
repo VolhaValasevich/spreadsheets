@@ -46,7 +46,6 @@ describe('Spreadsheet Functions', () => {
         let today, week, month;
 
         before(async () => {
-            const dataCopy = Object.assign({}, testData);
             const generatedData = generateDataByDate(testReport);
             today = getByCurrentDate(generatedData, new Date(testDate));
             week = getByCurrentWeek(generatedData, new Date(testDate));
@@ -77,8 +76,11 @@ describe('Spreadsheet Functions', () => {
     newSpreadsheetProperties.sheets.forEach((sheet) => {
         describe(`${sheet.properties.title}`, async () => {
 
+            let statistics;
+
             before(async () => {
                 await steps.writeValuesToRange(testSpreadsheetId, testData.data, `'${sheet.properties.title}'!A3:H`);
+                statistics = await steps.readRange(testSpreadsheetId, `'${sheet.properties.title}'!A2:L2`);
             })
 
             after(async () => {
@@ -86,43 +88,35 @@ describe('Spreadsheet Functions', () => {
             })
 
             it('should calculate the amount of passed steps', async () => {
-                const result = await steps.readRange(testSpreadsheetId, `'${sheet.properties.title}'!D2`);
-                expect(result).to.be.eql(testData.expectedResults.passedSteps);
+                expect(statistics[0][3]).to.be.eql(testData.expectedResults.passedSteps);
             });
 
             it('should calculate the amount of failed steps', async () => {
-                const result = await steps.readRange(testSpreadsheetId, `'${sheet.properties.title}'!E2`);
-                expect(result).to.be.eql(testData.expectedResults.failedSteps);
+                expect(statistics[0][4]).to.be.eql(testData.expectedResults.failedSteps);
             });
 
             it('should calculate the amount of skipped steps', async () => {
-                const result = await steps.readRange(testSpreadsheetId, `'${sheet.properties.title}'!F2`);
-                expect(result).to.be.eql(testData.expectedResults.skippedSteps);
+                expect(statistics[0][5]).to.be.eql(testData.expectedResults.skippedSteps);
             });
 
             it('should calculate total duration', async () => {
-                const result = await steps.readRange(testSpreadsheetId, `'${sheet.properties.title}'!H2`);
-                expect(result).to.be.eql(testData.expectedResults.duration);
+                expect(statistics[0][7]).to.be.eql(testData.expectedResults.duration);
             });
 
             it('should calculate the amount of scenarios', async () => {
-                const result = await steps.readRange(testSpreadsheetId, `'${sheet.properties.title}'!I2`);
-                expect(result).to.be.eql(testData.expectedResults.totalScenarios);
+                expect(statistics[0][8]).to.be.eql(testData.expectedResults.totalScenarios);
             });
 
             it('should calculate the amount of passed scenarios', async () => {
-                const result = await steps.readRange(testSpreadsheetId, `'${sheet.properties.title}'!J2`);
-                expect(result).to.be.eql(testData.expectedResults.passedScenarios);
+                expect(statistics[0][9]).to.be.eql(testData.expectedResults.passedScenarios);
             });
 
             it('should calculate the amount of failed scenarios', async () => {
-                const result = await steps.readRange(testSpreadsheetId, `'${sheet.properties.title}'!K2`);
-                expect(result).to.be.eql(testData.expectedResults.failedScenarios);
+                expect(statistics[0][10]).to.be.eql(testData.expectedResults.failedScenarios);
             });
 
             it('should calculate passrate', async () => {
-                const result = await steps.readRange(testSpreadsheetId, `'${sheet.properties.title}'!L2`);
-                expect(result).to.be.eql(testData.expectedResults.passrate);
+                expect(statistics[0][11]).to.be.eql(testData.expectedResults.passrate);
             });
         })
     })
