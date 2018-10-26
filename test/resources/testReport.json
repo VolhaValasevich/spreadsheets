@@ -1,0 +1,418 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Menu",
+    "line": 2,
+    "id": "menu",
+    "tags": [
+      {
+        "name": "@all",
+        "line": 1
+      }
+    ],
+    "uri": "test\\e2e\\features\\menu.feature",
+    "elements": [
+      {
+        "id": "menu;verify-user-can-open-menu",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Verify user can open menu",
+        "tags": [
+          {
+            "name": "@all",
+            "line": 1
+          },
+          {
+            "name": "@epam",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I open \"https://www.epam.com/\" url",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8276
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I wait until \"Menu\" is present",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 170
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "Text of \"Menu\" should contain \"MENU\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 97,
+              "error_message": "AssertionError\n    + expected - actual\n\n\n    at World.Then (C:\\Users\\stran\\Desktop\\Lecture Materials\\BDD\\Protractor+Cucumber\\test\\e2e\\step_definitions\\validationSteps\\validationSteps.js:35:62)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I click \"Menu\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I wait until \"Expanded Menu\" is present",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "\"Expanded Menu\" should be visible",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "Count of \"Expanded Menu Sublists\" should be \"3\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "Text of \"Expanded Menu Row Titles\" should contain \"WHAT WE DO\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "Count of \"Expanded Menu Row Titles\" should be \"6\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I highlight \"Globus Icon\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I wait \"10\" seconds",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1160
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "keyword": "Feature",
+    "name": "Access to other sites",
+    "line": 2,
+    "id": "access-to-other-sites",
+    "tags": [
+      {
+        "name": "@all",
+        "line": 1
+      }
+    ],
+    "uri": "test\\e2e\\features\\otherSites.feature",
+    "elements": [
+      {
+        "id": "access-to-other-sites;i-should-be-able-too-access-bash.im",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "I should be able too access bash.im",
+        "tags": [
+          {
+            "name": "@all",
+            "line": 1
+          },
+          {
+            "name": "@bash",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "I open \"http://bash.im/\" url",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2812
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Page title should be \"Цитатник Рунета\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "access-to-other-sites;i-should-be-able-to-access-github",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "I should be able to access github",
+        "tags": [
+          {
+            "name": "@all",
+            "line": 1
+          },
+          {
+            "name": "@git",
+            "line": 9
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I open \"https://github.com/\" url",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2925
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "Page title should be \"The world’s leading software development platform · GitHub\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "access-to-other-sites;i-should-be-able-to-access-https://habrahabr.ru/",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "I should be able to access https://habrahabr.ru/",
+        "tags": [
+          {
+            "name": "@all",
+            "line": 1
+          },
+          {
+            "name": "@other",
+            "line": 14
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 16,
+            "name": "I open \"https://habrahabr.ru/\" url",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7179
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "Page title should be \"Лучшие публикации за сутки / Хабр\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 75
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "access-to-other-sites;i-should-be-able-to-access-https://ya.ru/",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "I should be able to access https://ya.ru/",
+        "tags": [
+          {
+            "name": "@all",
+            "line": 1
+          },
+          {
+            "name": "@other",
+            "line": 14
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 16,
+            "name": "I open \"https://ya.ru/\" url",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1259
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "Page title should be \"Яндекс\"",
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "Materials\\BDD\\Protractor+Cucumber\\node_modules\\cucumber\\src\\support_code_library_builder\\define_helpers.js:90"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
