@@ -36,8 +36,10 @@ function stringToDate(string) {
     return new Date(dateArray[2], dateArray[0] - 1, dateArray[1]);
 }
 
-function getByCurrentDate(data) {
-    const currentDate = new Date(Date.now());   //get current date and time
+function getByCurrentDate(data, dateOptional) {
+    let currentDate;
+    if (!dateOptional) currentDate = new Date(Date.now());   //get current date and time
+    else currentDate = dateOptional;
     const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());   //get the beginning of current day
     const result = data.map((row) => {
         const dataDate = stringToDate(row[0]);      //parse the date of scenario run into a Date object
@@ -46,8 +48,10 @@ function getByCurrentDate(data) {
     return result.filter(el => el);     //clear all undefined values
 }
 
-function getByCurrentWeek(data) {
-    const currentDate = new Date(Date.now());   //get current date and time
+function getByCurrentWeek(data, dateOptional) {
+    let currentDate;
+    if (!dateOptional) currentDate = new Date(Date.now());   //get current date and time
+    else currentDate = dateOptional;
     const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());   //get the beginning of current day
     const currentWeekDay = currentDate.getDay();
     const firstWeekDay = today.getTime() - dayInMilliseconds * (currentWeekDay + 1);   //date in the beginning of current week
@@ -59,11 +63,13 @@ function getByCurrentWeek(data) {
     return result.filter(el => el);     //clear all undefined values
 }
 
-function getByCurrentMonth(data) {
-    const currentDate = new Date(Date.now());   //get current date and time
+function getByCurrentMonth(data, dateOptional) {
+    let currentDate;
+    if (!dateOptional) currentDate = new Date(Date.now());   //get current date and time
+    else currentDate = dateOptional;
     const result = data.map((row) => {
         const dataDate = stringToDate(row[0]);      //parse the date of scenario run into a Date object
-        if (dataDate.getMonth() === currentDate.getMonth()) return row;
+        if (dataDate.getMonth() === currentDate.getMonth() && dataDate.getFullYear() === currentDate.getFullYear()) return row;
     })
     return result.filter(el => el);     //clear all undefined values
 }
