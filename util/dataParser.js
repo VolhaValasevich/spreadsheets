@@ -1,8 +1,11 @@
 const dayInMilliseconds = 24 * 60 * 60 * 1000;
 
-function parseReport(reportJson) {
+function parseReport(reportJson, dateOptional) {
     let result = [];
-    const date = new Date(Date.now());
+    let date;
+    if (!dateOptional) {
+        date = new Date(Date.now());
+    } else date = dateOptional;
     const dateString = date.toLocaleDateString('en-US');
     result.push([dateString, date.toLocaleTimeString()]);
     reportJson.forEach((feature) => {
@@ -38,7 +41,7 @@ function getByCurrentDate(data) {
     const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());   //get the beginning of current day
     const result = data.map((row) => {
         const dataDate = stringToDate(row[0]);      //parse the date of scenario run into a Date object
-        if (dataDate.getTime() === today.getTime()) return row;     
+        if (dataDate.getTime() === today.getTime()) return row;
     })
     return result.filter(el => el);     //clear all undefined values
 }
@@ -51,7 +54,7 @@ function getByCurrentWeek(data) {
     const lastWeekDay = today.getTime() + dayInMilliseconds * (7 - currentWeekDay);    //date in the end of current week
     const result = data.map((row) => {
         const dataDate = stringToDate(row[0]);      //parse the date of scenario run into a Date object
-        if (dataDate.getTime() >= firstWeekDay && dataDate.getTime() <= lastWeekDay) return row;     
+        if (dataDate.getTime() >= firstWeekDay && dataDate.getTime() <= lastWeekDay) return row;
     })
     return result.filter(el => el);     //clear all undefined values
 }
@@ -60,7 +63,7 @@ function getByCurrentMonth(data) {
     const currentDate = new Date(Date.now());   //get current date and time
     const result = data.map((row) => {
         const dataDate = stringToDate(row[0]);      //parse the date of scenario run into a Date object
-        if (dataDate.getMonth() === currentDate.getMonth()) return row;     
+        if (dataDate.getMonth() === currentDate.getMonth()) return row;
     })
     return result.filter(el => el);     //clear all undefined values
 }
