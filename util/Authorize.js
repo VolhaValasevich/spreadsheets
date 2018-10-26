@@ -7,6 +7,13 @@ const path = require('path');
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/drive'];
 
+/**
+ * Authorizes a user for Google Spreadsheets.
+ * 
+ * @param {Object} creds - User credentials.
+ * 
+ * @returns {Promise} An authorized OAuth2 client.
+ */
 function authorize(creds) {
     return new Promise((resolve, reject) => {
         const { client_secret, client_id, redirect_uris } = creds.installed;
@@ -22,6 +29,14 @@ function authorize(creds) {
     })
 }
 
+/**
+ * Gets a new access token and authorizes a user for Google Spreadsheets.
+ * 
+ * @param {oAuth2Client} oAuth2Client - Google OAuth2 client.
+ * @param {string} tokenPath - Path where the new user token will be stored. 
+ * 
+ * @returns {Promise} An authorized OAuth2 client.
+ */
 function getNewToken(oAuth2Client, tokenPath) {
     const authUrl = oAuth2Client.generateAuthUrl({
         access_type: 'offline',

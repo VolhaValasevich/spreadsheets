@@ -10,10 +10,19 @@ const { getByCurrentDate, getByCurrentWeek, getByCurrentMonth } = require('./dat
 
 class StepFunctions {
 
+    /** 
+     * @constructor
+     * @param {Object} auth - an authorized Google OAuth2 client 
+     */
     constructor(auth) {
         this.sheets = google.sheets({ version: 'v4', auth });
     }
 
+    /**
+     * Creates a new spreadsheet with properties described in newSpreadsheetProperties.json
+     * 
+     * @returns {Promise<string>} New spreadsheet ID.
+     */
     createNewSpreadsheet() {
         const resource = newSpreadsheetProperties;
         resource.sheets.forEach((sheet) => {
@@ -31,6 +40,14 @@ class StepFunctions {
         })
     }
 
+    /**
+     * Reads all data from the spreadsheet in the specified range.
+     * 
+     * @param {string} spreadsheetId - Spreadsheet ID.
+     * @param {string} range - Cell range in A1 format.
+     * 
+     * @returns {Promise<Array<Array<string>>>} An array with spreadsheet data.
+     */
     readRange(spreadsheetId, range) {
         return new Promise((resolve, reject) => {
             this.sheets.spreadsheets.values.get({
@@ -45,6 +62,14 @@ class StepFunctions {
         })
     }
 
+    /**
+     * Reads all data from the spreadsheet in the specified ranges.
+     * 
+     * @param {string} spreadsheetId - Spreadsheet ID.
+     * @param {Array<string>} ranges - An array of cell ranges in A1 format.
+     * 
+     * @returns {Promise<Array<Array<string>>>} An array with spreadsheet data.
+     */
     readMultipleRanges(spreadsheetId, ranges) {
         return new Promise((resolve, reject) => {
             this.sheets.spreadsheets.values.batchGet({
@@ -57,6 +82,15 @@ class StepFunctions {
         })
     }
 
+    /**
+     * Writes data to the spreadsheet in a specified range.
+     * 
+     * @param {string} spreadsheetId - Spreadsheet ID.
+     * @param {Array<Array<string>>} values - An array of values to write.
+     * @param {string} range - Cell range in A1 format.
+     * 
+     * @returns {Promise} Request response.
+     */
     writeValuesToRange(spreadsheetId, values, range) {
         const resource = { values };
         const valueInputOption = 'USER_ENTERED';
@@ -73,6 +107,15 @@ class StepFunctions {
         })
     }
 
+    /**
+     * Appends data to the spreadsheet in a specified range.
+     * 
+     * @param {string} spreadsheetId - Spreadsheet ID.
+     * @param {Array<Array<string>>} values - An array of values to write.
+     * @param {string} range - Cell range in A1 format.
+     * 
+     * @returns {Promise} Request response.
+     */
     appendValues(spreadsheetId, values, range) {
         const resource = { values };
         const valueInputOption = 'USER_ENTERED';
@@ -89,6 +132,12 @@ class StepFunctions {
         })
     }
 
+    /**
+     * Writes all sorted test data in the spreadsheet. 
+     * 
+     * @param {string} spreadsheetId - Spreadsheet ID.
+     * @param {Object} data - Test data. Must have allTimeData, lastMonthData, lastWeekData and todayData properties.
+     */
     async writeAllDataToSpreadsheet(spreadsheetId, data) {
         const categories = Object.keys(data);
         await this.clearAllData(spreadsheetId);
@@ -97,6 +146,12 @@ class StepFunctions {
         })
     }
 
+    /**
+     * Adds the latest test data to all data, sorts by time periods and writes to the spreadsheet.
+     * 
+     * @param {string} spreadsheetId - Spreadsheet ID.
+     * @param {Array<Array<string>>} report - Array of values with test data.
+     */
     async updateData(spreadsheetId, report) {
         const data = { };
         data.allTimeData = await this.readRange(spreadsheetId, newSpreadsheetProperties.sheets[0].properties.title);
@@ -107,6 +162,13 @@ class StepFunctions {
         await this.writeAllDataToSpreadsheet(spreadsheetId, data);
     }
 
+    /**
+     * Clears all data from the spreadsheet (except headers).
+     * 
+     * @param {string} spreadsheetId - Spreadsheet ID.
+     * 
+     * @returns {Promise} Request response.
+     */
     clearAllData(spreadsheetId) {
         return new Promise((resolve, reject) => {
             const ranges = [];
@@ -123,6 +185,13 @@ class StepFunctions {
         })
     }
 
+    /**
+     * Applies color, text and conditional formattng to the spreadsheet.
+     * 
+     * @param {string} spreadsheetId - Spreadsheet ID.
+     * 
+     * @returns {Promise} Request response.
+     */
     colorFormatting(spreadsheetId) {
         let requests = [];
         newSpreadsheetProperties.sheets.forEach((sheet) => {    //apply all color and conditional formatting rules to all sheets in a spreadsheet
