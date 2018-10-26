@@ -135,6 +135,7 @@ class StepFunctions {
     /**
      * Writes all sorted test data in the spreadsheet. 
      * 
+     * @async
      * @param {string} spreadsheetId - Spreadsheet ID.
      * @param {Object} data - Test data. Must have allTimeData, lastMonthData, lastWeekData and todayData properties.
      */
@@ -149,6 +150,7 @@ class StepFunctions {
     /**
      * Adds the latest test data to all data, sorts by time periods and writes to the spreadsheet.
      * 
+     * @async
      * @param {string} spreadsheetId - Spreadsheet ID.
      * @param {Array<Array<string>>} report - Array of values with test data.
      */
