@@ -63,26 +63,6 @@ class StepFunctions {
     }
 
     /**
-     * Reads all data from the spreadsheet in the specified ranges.
-     * 
-     * @param {string} spreadsheetId - Spreadsheet ID.
-     * @param {Array<string>} ranges - An array of cell ranges in A1 format.
-     * 
-     * @returns {Promise<Array<Array<string>>>} An array with spreadsheet data.
-     */
-    readMultipleRanges(spreadsheetId, ranges) {
-        return new Promise((resolve, reject) => {
-            this.sheets.spreadsheets.values.batchGet({
-                spreadsheetId,
-                ranges
-            }, (err, result) => {
-                if (err) reject(err);
-                resolve(result.data.valueRanges);
-            })
-        })
-    }
-
-    /**
      * Writes data to the spreadsheet in a specified range.
      * 
      * @param {string} spreadsheetId - Spreadsheet ID.
@@ -103,31 +83,6 @@ class StepFunctions {
             }, (err, result) => {
                 if (err) reject(err);
                 resolve(result);
-            })
-        })
-    }
-
-    /**
-     * Appends data to the spreadsheet in a specified range.
-     * 
-     * @param {string} spreadsheetId - Spreadsheet ID.
-     * @param {Array<Array<string>>} values - An array of values to write.
-     * @param {string} range - Cell range in A1 format.
-     * 
-     * @returns {Promise} Request response.
-     */
-    appendValues(spreadsheetId, values, range) {
-        const resource = { values };
-        const valueInputOption = 'USER_ENTERED';
-        return new Promise((resolve, reject) => {
-            this.sheets.spreadsheets.values.append({
-                spreadsheetId,
-                range,
-                valueInputOption,
-                resource
-            }, (err, res) => {
-                if (err) reject(err);
-                resolve(res);
             })
         })
     }
