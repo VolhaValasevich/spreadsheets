@@ -100,6 +100,7 @@ class StepFunctions {
         newSpreadsheetProperties.sheets.forEach(async (sheet) => {
             await this.writeValuesToRange(spreadsheetId, data[categories[sheet.properties.sheetId]], `'${sheet.properties.title}'!A3:H`);
         })
+        await this.resizeAllColumns(spreadsheetId);
     }
 
     /**
@@ -117,6 +118,38 @@ class StepFunctions {
         data.lastWeekData = getByCurrentWeek(data.allTimeData);
         data.todayData = getByCurrentDate(data.lastWeekData);
         await this.writeAllDataToSpreadsheet(spreadsheetId, data);
+    }
+
+    /**
+     * Automatically resizes all columns of the spreadsheet, based on the size of the column content.
+     * 
+     * @param {string} spreadsheetId - Spreadsheet ID.
+     * 
+     * @returns {Promise} Request response.
+     */
+    resizeAllColumns(spreadsheetId) {
+        const requests = [];
+        newSpreadsheetProperties.sheets.forEach((sheet) => {
+            requests.push({
+                autoResizeDimensions: {
+                    dimensions: {
+                        sheetId: sheet.properties.sheetId,
+                        dimension: 'COLUMNS',
+                        startIndex: 0,
+                        endIndex: 11
+                    }
+                }
+            })
+        })
+        return new Promise((resolve, reject) => {
+            this.sheets.spreadsheets.batchUpdate({
+                spreadsheetId,
+                resource: { requests }
+            }, (err, res) => {
+                if (err) reject(err);
+                resolve(res);
+            })
+        })
     }
 
     /**
