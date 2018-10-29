@@ -1,5 +1,7 @@
 .idea/
 .npmrc
+.nyc_output/
+coverage/
 report/
 tokens/
 spreadsheetId.json
