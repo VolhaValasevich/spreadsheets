@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "./node_modules/.bin/nyc  ./node_modules/.bin/_mocha",
     "posttest": "./node_modules/.bin/nyc report --reporter=html"
   },
