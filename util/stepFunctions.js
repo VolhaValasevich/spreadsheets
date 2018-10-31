@@ -100,7 +100,6 @@ class StepFunctions {
         newSpreadsheetProperties.sheets.forEach(async (sheet) => {
             await this.writeValuesToRange(spreadsheetId, data[categories[sheet.properties.sheetId]], `'${sheet.properties.title}'!A3:H`);
         })
-        await this.resizeAllColumns(spreadsheetId);
     }
 
     /**
