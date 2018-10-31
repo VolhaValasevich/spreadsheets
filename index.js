@@ -1,14 +1,15 @@
+#!/usr/bin/env node
+
 const creds = require('./resources/credentials.json');
 const authorize = require('./util/Authorize');
 const stepFunctions = require('./util/stepFunctions');
 const fs = require('fs');
 const path = require('path');
 const { parseReport } = require('./util/dataParser');
-const report = require('./resources/report.json');
 const logger = require('./util/logger').logger;
 const spreadsheetIdPath = path.join(__dirname, 'resources', 'spreadsheetId.json');
 
-async function main() {
+async function main(report) {
     let spreadsheetId;
     const auth = await authorize(creds);
     const steps = new stepFunctions(auth);
