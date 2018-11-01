@@ -24,7 +24,7 @@ spreadsheets -r report.json
 Alternatively, you can require it in your code.
 
 ```
-const generateReport = require('google-spreadsheets');
+const generateReport = require('spreadsheets');
 generateReport('./report.json);
 ```
 
