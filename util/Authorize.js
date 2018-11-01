@@ -15,18 +15,18 @@ const SCOPES = ['https://www.googleapis.com/auth/drive'];
  * @returns {Promise} An authorized OAuth2 client.
  */
 function authorize(creds) {
-    return new Promise((resolve, reject) => {
-        const { client_secret, client_id, redirect_uris } = creds.installed;
-        const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
-        const credentials = JSON.parse(JSON.stringify(creds))   //create a copy to modify
-        credentials.token_path.unshift(__dirname, '..');
-        const tokenPath = path.join(...credentials.token_path);
-        if (fs.existsSync(tokenPath)) {
-            const token = fs.readFileSync(tokenPath);
-            oAuth2Client.setCredentials(JSON.parse(token));
-            resolve(oAuth2Client);
-        } else return getNewToken(oAuth2Client, tokenPath);
-    })
+    const { client_secret, client_id, redirect_uris } = creds.installed;
+    const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
+    const credentials = JSON.parse(JSON.stringify(creds))   //create a copy to modify
+    credentials.token_path.unshift(__dirname, '..');
+    const tokenPath = path.join(...credentials.token_path);
+    if (fs.existsSync(tokenPath)) {
+        const token = fs.readFileSync(tokenPath);
+        oAuth2Client.setCredentials(JSON.parse(token));
+        return oAuth2Client;
+    } else {
+        return getNewToken(oAuth2Client, tokenPath);
+    }
 }
 
 /**
@@ -42,14 +42,14 @@ function getNewToken(oAuth2Client, tokenPath) {
         access_type: 'offline',
         scope: SCOPES,
     });
-    logger.info(`Authorize this app by visiting this url: ${authUrl}`);
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
-    rl.question('Enter the code from that page here: ', (code) => {
-        rl.close();
-        return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
+        logger.info(`Authorize this app by visiting this url: ${authUrl}`);
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout,
+        });
+        rl.question('Enter the code from that page here: ', (code) => {
+            rl.close();
             oAuth2Client.getToken(code, (err, token) => {
                 if (err) reject(err);
                 oAuth2Client.setCredentials(token);
