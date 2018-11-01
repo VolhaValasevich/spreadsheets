@@ -3,6 +3,7 @@ const readline = require('readline');
 const { google } = require('googleapis');
 const logger = require('./logger').logger;
 const path = require('path');
+const token_path = path.join('tokens', 'token.json');
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/drive'];
@@ -19,7 +20,7 @@ function authorize(creds) {
     const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
     const credentials = JSON.parse(JSON.stringify(creds))   //create a copy to modify
     credentials.token_path.unshift(__dirname, '..');
-    const tokenPath = path.join(...credentials.token_path);
+    const tokenPath = path.resolve(token_path);
     if (fs.existsSync(tokenPath)) {
         const token = fs.readFileSync(tokenPath);
         oAuth2Client.setCredentials(JSON.parse(token));
@@ -54,6 +55,7 @@ function getNewToken(oAuth2Client, tokenPath) {
                 if (err) reject(err);
                 oAuth2Client.setCredentials(token);
                 // Store the token to disk for later program executions
+                if (!fs.existsSync(path.resolve('tokens'))) fs.mkdirSync(path.resolve('tokens')) 
                 fs.writeFileSync(tokenPath, JSON.stringify(token));
                 logger.info(`Token stored to [${tokenPath}]`);
                 resolve(oAuth2Client);

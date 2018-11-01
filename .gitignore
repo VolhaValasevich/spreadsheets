@@ -4,6 +4,7 @@
 coverage/
 report/
 tokens/
+credentials.json
 spreadsheetId.json
 node_modules/
 npm-debug.log
