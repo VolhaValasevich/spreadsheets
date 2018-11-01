@@ -18,7 +18,7 @@ npm i "https://github.com/VolhaValasevich/spreadsheets.git"
 The reporter can be launched via the command line with the path to your report.json as an argument.
 
 ```
-spreadsheets -r report.json
+spreadsheets -r ./report.json -c ./creds.json
 ```
 
 Alternatively, you can require it in your code.
@@ -28,7 +28,7 @@ const generateReport = require('spreadsheets');
 generateReport('./report.json);
 ```
 
-If the module is not authorized on Google yet (no access token found), you'll be prompted to follow the authorization link and copy the confirmation code into the terminal to create an access token.
+Access token is stored in the ./tokens directory. If the module is not authorized on Google yet (no access token found), you'll be prompted to follow the authorization link and copy the confirmation code into the terminal to create an access token.
 
 ```
 info: Authorize this app by visiting this url: https://accounts.google.com/o/oauth2/v2/auth?...
@@ -40,3 +40,4 @@ The module creates a Google Spreadsheet and stores its ID in a json file. If the
 ## Parameters
 
 - -r (--report) : path to your Cucumber report.json file.
+- -c (--creds) : path to your file with Google credentials.
