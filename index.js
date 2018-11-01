@@ -22,7 +22,7 @@ async function main(reportPath) {
     const auth = await authorize(creds);
     const steps = new stepFunctions(auth);
     try {
-        report = require(reportPath); 
+        report = require(path.resolve(reportPath)); 
     } catch (err) {
         throw new Error(`Cannot read report file - ${err.message}`);
     }
